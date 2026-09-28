@@ -19,6 +19,7 @@
 \usepackage{threeparttable}
 \usepackage{multirow}
 \usepackage{titlesec}
+\usepackage[greek,english]{babel}
 
 % --- CITATION AND HYPERLINKING --- 
 \hypersetup{
@@ -54,7 +55,7 @@ Scaling collective decision-making beyond small groups without concentrating aut
 \begin{acknowledgements}
 I would like to thank Dr. Dino Carpentras and Prof. Dr. Dirk Helbing for their supervision and guidance throughout this project. The COSS team provided invaluable feedback and support.
 
-I am grateful to the participants of the user studies for taking the time to help evaluate this work. I especially thank my flatmates for feeding and indulging me, my friends, and of course my partner, Selin Wildhaber, for always being there when I needed it. It would not have been possible without it.
+I am grateful to the participants of the user studies for taking the time to help evaluate this work. I especially thank my flatmates for feeding and indulging me, my friends, and of course my partner, Selin, for always being there when I needed it. It would not have been possible without it.
 \end{acknowledgements}
 
 \chapter*{List of Abbreviations}
@@ -75,7 +76,7 @@ VSD  & Value-Sensitive Design \\
 \end{tabular}
 
 \tableofcontents
-\listoffigures
+p\listoffigures
 \listoftables
 \markboth{}{}
 
@@ -88,13 +89,13 @@ VSD  & Value-Sensitive Design \\
 \section{Problem of Collective Decision-Making at Scale}
 \label{sec:problem-statement}
 
-From foraging bands to city councils to open-source software communities, human collectives throughout history have faced a persistent challenge: \textit{how can groups find solutions to collective problems that bring together their individual knowledge, experience, and interests, combining them into outcomes better than any single contribution, while maintaining fair decision making power over the final outcome?} 
+From foraging bands to city councils to open-source software communities, human collectives throughout history have faced a persistent challenge: \textit{how can groups find solutions to collective problems that bring together their individual knowledge, experience, and interests, combining them into outcomes better than any single contribution, while maintaining fair decision-making power over the final outcome?} 
 
-For groups, where face-to-face interaction is possible, deliberation is an effective strategy for solution finding and decision making. 
-However, in large groups two broad categories of methods are available: \textit{delegate} the problem to a smaller group of representatives, or find mechanisms that allow many people to participate \textit{directly} in generating collective solutions. Each strategy involves distinct trade-offs in outcome quality, breadth of participation, and distribution of decision power.
+For groups where face-to-face interaction is possible, deliberation is an effective strategy for solution finding and decision-making. 
+However, in large groups, two broad categories of methods are available: \textit{delegate} the problem to a smaller group of representatives, or find mechanisms that allow many people to participate \textit{directly} in generating collective solutions. Each strategy involves distinct trade-offs in outcome quality, breadth of participation, and distribution of decision power.
 
-Carpentras et al.\ \cite{carpentras_wisdom_2025} propose remixing as a scalable alternative to deliberation. This thesis implements and evaluates their approach through a concrete prototype called \textit{Synesis},\footnote{From Greek \textit{σύνεσις} (``bringing together,'' ``understanding''): the capacity to connect scattered pieces of information into a coherent whole. The name reflects the platform's core mechanism of synthesizing distributed contributions into collective outcomes.} a democratic remixing platform.
-We build on their comparison of deliberation, crowdsourcing, and remixing and consider delegation as a historically dominant scaling and decision making strategy, to produce a four-part taxonomy. 
+Carpentras et al.\ \cite{carpentras_wisdom_2025} propose remixing as a scalable alternative to deliberation. This thesis implements and evaluates their approach through a concrete prototype called \textit{Synesis},\footnote{From Greek \textgreek{s'unesis} (``bringing together,'' ``understanding,'' ``intelligence''). The name reflects the platform's core mechanism of synthesizing distributed contributions into collective outcomes.} a democratic remixing platform.
+We build on their comparison of deliberation, crowdsourcing, and remixing and consider delegation as a historically dominant scaling and decision-making strategy, to produce a four-part taxonomy. 
 
 Face-to-face deliberation ($\sim$5--30 people) allows egalitarian, direct interaction and produces the highest-quality collective outcomes on a small scale. Gastil \cite{gastil1993} established that democratic deliberation requires equality of status, mutual respect, and inclusive access to information, conditions that often exist in small groups, but degrade as the size of the group increases. Cognitively, group size is constrained by social relationship limits: while Dunbar \cite{dunbar1992neocortex} identified a community threshold of approximately 150 individuals, maintaining the intense mutual awareness required for egalitarian deliberation corresponds to Dunbar's much tighter ``sympathy group'' layer ($\sim$12--15 people). 
 Woolley et al.\ \cite{woolley2010evidence} demonstrated that a group's ability to perform well across diverse tasks depends not on individual ability but on the social dynamics of collaboration (social sensitivity and equality of turn-taking) - conditions that small deliberative groups naturally provide. By inference from these cognitive limits and Woolley's social dynamics findings, we argue that these conditions structurally fail to scale: as group size exceeds the threshold at which stable social relationships can be maintained, turn-taking equality degrades and social sensitivity diminishes, undermining the interaction dynamics on which effective group problem-solving depends. A simpler practical constraint reinforces this structural argument: face-to-face deliberation requires a shared physical space but turn-taking time scales linearly with group size, and the capacity for participants to hear and respond to one another degrades well before cognitive relationship limits are reached.
@@ -188,7 +189,7 @@ The CI framework established in the preceding section identifies four mechanisms
 
 Remixing emerged as a cultural and legal paradigm according to Lessig \cite{lessig2008remix}, who characterized ``remix culture'' as a Read/Write mode of participation, where individuals actively create by recombining and modifying existing cultural materials, in contrast to passive Read-Only consumption. Nickerson \cite{nickerson2020remixing} formalized this in computational design as ``collective design through modification'', a process in which participants build on each other's partial contributions rather than producing complete solutions independently. Hill and Monroy-Hern\'{a}ndez \cite{hill2013remixing} identify an empirical trade-off in such systems: factors that make a contribution generative (moderate complexity, prominent authorship, prior remixes) are associated with decreased originality in derivatives, a ``Remixing Dilemma'' that any platform applying remixing to democratic deliberation must structurally address.
 
-The direct research foundation for this thesis is provided by two agent-based modeling studies from ETH Z\"{u}rich's Computational Social Science group. Carpentras, H\"{a}nggli Fricker, and Helbing \cite{carpentras_empowering_2024} demonstrated that introducing a \textit{common knowledge base} for storing partial solutions, allowing sub-components of proposals to be re-used across groups, produces a win-win dynamic in participatory budgeting: both majority and minority solutions improve, because collective intelligence emerges from structured, generative refinement rather than mere preference aggregation. Carpentras et al.\ \cite{carpentras_wisdom_2025} extend this by directly comparing deliberation-based, crowdsourcing-based, and remixing-based systems. Their simulations confirm that deliberation degrades rapidly beyond small groups due to coordination costs. Crowdsourcing scales better, but produces only marginal improvements, because participants act independently. For groups larger than approximately ten people remixing outperforms both, exploiting a synergy effect where more participants yield better solutions. Critically, these results are simulation-based: they have not been tested with real human participants in the domain of democratic deliberation. The simulation uses quality-optimizing agents with full access to the proposal space conditions that diverge substantially from bounded human cognition on normative questions with no objectively correct answer.
+The direct research foundation for this thesis is provided by two agent-based modeling studies from ETH Z\"{u}rich's Computational Social Science group. Carpentras, H\"{a}nggli Fricker, and Helbing \cite{carpentras_empowering_2024} demonstrated that introducing a \textit{common knowledge base} for storing partial solutions, allowing sub-components of proposals to be re-used across groups, produces a win-win dynamic in participatory budgeting: both majority and minority solutions improve, because collective intelligence emerges from structured, generative refinement rather than mere preference aggregation. Carpentras et al.\ \cite{carpentras_wisdom_2025} extend this by directly comparing deliberation-based, crowdsourcing-based, and remixing-based systems. Their simulations confirm that deliberation degrades rapidly beyond small groups due to coordination costs. Crowdsourcing scales better, but produces only marginal improvements, because participants act independently. For groups larger than approximately ten people remixing outperforms both, exploiting a synergy effect where more participants yield better solutions. Critically, these results are simulation-based: they have not been tested with real human participants in the domain of democratic deliberation. The simulation uses quality-optimizing agents with full access to the proposal space, conditions that diverge substantially from bounded human cognition on normative questions with no objectively correct answer.
 
 The scaling advantage of remixing rests on a formal model of quality accumulation. Carpentras et al.~\cite{carpentras_wisdom_2025} model solution creation as an iterative process: when a participant creates a new solution~$s_k$ from an existing solution~$s_{k-1}$, the average utility changes as
 \begin{equation}
@@ -255,7 +256,7 @@ Each question progresses through a deterministic, time-driven lifecycle that str
 \begin{enumerate}
     \item \textbf{Proposed:} The question gathers activation votes from the community, determining whether it merits collective attention. (Not implemented in the current prototype.)
     \item \textbf{Discussion:} The main working phase: all proposal creation, subscribing, remixing, and combining occurs here. 
-    \item \textbf{Ballot Preparation:} The Ballot to be voted on is created. Creation of proposals is disabled. Users are prompted to review their subscriptions and only keep those that they want to see on the final ballot. 
+    \item \textbf{Ballot Preparation:} The ballot to be voted on is created, while proposal creation is disabled. Users are prompted to review their subscriptions and only keep those that they want to see on the final ballot. 
     \item \textbf{Final Vote:} The Ballot is frozen. Users submit their filled out Ballot.
     \item \textbf{Decided:} The terminal state. Votes are tallied and the collective decision is declared.
 \end{enumerate}
@@ -302,7 +303,7 @@ This graph structure provides two critical affordances that flat forums lack. Fi
 
 A key limitation distinguishes this from software version control: \textit{semantic merging is unsolved}. In Git, merge conflicts are sometimes detectable because code has formal syntax. In natural-language deliberation, there is no automated way to tell whether two proposals are compatible, contradictory, or orthogonal. The platform therefore relies on human judgment: a Combination's author must manually synthesize the relevant elements of each parent into a coherent new proposal. The system provides the structural scaffold (multi-parent edges) but not the semantic resolution.
 
-The structural logic of the DAG (recombination and incremental improvement in a shared knowledge base) operationalizes the Collective Brain framework introduced in Section~\ref{sec:ci-framework}. It also directly implements the central mechanism of Carpentras et al.'s agent-based model \cite{carpentras_empowering_2024}: a common knowledge base in which partial solutions are stored and re-used across the group, enabling the win-win dynamic between majority and minority proposals that the simulation predicts.
+The structural logic of the DAG (recombination and incremental improvement in a shared knowledge base) operationalizes the Collective Brain framework introduced in Section~\ref{sec:ci-framework}. It also directly implements the central mechanism of Carpentras et al.'s agent-based model \cite{carpentras_empowering_2024}: a common knowledge base in which partial solutions are stored and re-used across the group, enabling the win-win dynamic between majority and minority proposals that the simulation predicts. Figure~\ref{fig:proposal_dag} shows a proposal graph generated during a user study.
 \begin{figure}
     \centering
     \includegraphics[width=1\linewidth]{figures/User_Study_Generated_DAG_Screenshot.png}
@@ -317,7 +318,7 @@ The proposal DAG constitutes a \textit{shared knowledge base}: a collectively pr
 
 The DAG enables \textit{algorithmic attention routing}: the platform's discovery algorithm distributes each user's attention across the shared store, surfacing proposals where their contribution is most needed. Users contribute different kinds of work: posting rough ideas, restructuring unclear proposals, adding missing perspectives, forking ideas to explore alternatives, and synthesizing contributions from multiple authors.
 
-The core scaling challenge this creates is a \textit{distributed evaluation problem}. A deliberation with $N$ participants and $P$ proposals produces an $N \times P$ attention matrix. Full evaluation by every participant (the standard assumption in deliberative assemblies) is infeasible beyond small groups. If we assume users produce a constant amount of proposals on average, this attention matrix scales quadratically with the amount of users in the system. The platform must therefore distribute the evaluation workload so that each proposal receives enough independent assessments to produce a reliable quality signal, while each user evaluates only a tractable subset. This is structurally analogous to the reviewer assignment problem in academic peer review \cite{charlin2013}, where papers must be matched to qualified reviewers under workload constraints, but here in a dynamic, self-organizing context where the ``papers'' (proposals) are created continuously and the ``reviewers'' (users) choose their own engagement.
+The core scaling challenge this creates is a \textit{distributed evaluation problem}. A deliberation with $N$ participants and $P$ proposals produces an $N \times P$ attention matrix. Full evaluation by every participant (the standard assumption in deliberative assemblies) is infeasible beyond small groups. If we assume users produce a constant number of proposals on average, this attention matrix scales quadratically with the number of users in the system. The platform must therefore distribute the evaluation workload so that each proposal receives enough independent assessments to produce a reliable quality signal, while each user evaluates only a tractable subset. This is structurally analogous to the reviewer assignment problem in academic peer review \cite{charlin2013}, where papers must be matched to qualified reviewers under workload constraints, but here in a dynamic, self-organizing context where the ``papers'' (proposals) are created continuously and the ``reviewers'' (users) choose their own engagement.
 
 Surowiecki's four conditions for wise crowds \cite{surowiecki2004} provide the design framework for this distributed evaluation: \textit{diversity of opinion} (users must be routed across multiple perspectives), \textit{independence} (routing must be based on each user's individual state rather than herd signals, to prevent information cascades \cite{lorenz2011social}), \textit{decentralization} (each user draws on their own local knowledge), and \textit{aggregation} (the convergence pipeline transforms individual evaluations into collective signals). The attention-routing algorithm is the mechanism that helps to ensure the diversity and independence conditions are met at the input level, so that the aggregation step produces a reliable output. Carpentras et al.\ \cite{carpentras_wisdom_2025} predict that distributed evaluation with approximately 50 votes per proposal suffices to identify solutions within 90\% of the theoretical optimum under worst-case preference misalignment. Whether this threshold holds with real human evaluators, who vary in engagement, expertise, and attention---is an empirical question that the study's small scale (7--12 participants) can only begin to probe. The platform's two-stage structure (distributed subscription-based evaluation during the Discussion phase, followed by a full ranked ballot during the final Voting phase) structurally mirrors the paper's ``distributed voting followed by full voting'' setup, which improves selection quality beyond distributed voting alone.
 
@@ -354,7 +355,7 @@ The Evaluation Window is the platform's primary aggregation mechanism and the st
 
 First, subscription counts constitute the \textit{community signal} from which Champion proposals are elected: the highest-subscribed proposal within each thematic cluster becomes the cluster's representative in the ballot. Second, subscriptions trigger \textit{Siphon notifications}: when a new remix of a proposal arrives, its current subscribers are notified and invited to compare it with the original, optionally migrating their subscription to the refined descendant.
 
-The Evaluation Window is distinct from the Discovery Window in a structurally important sense: the Discovery Window helps users find potentially interesting or important proposals that balance both the user's and the whole community's interests. The Evaluation Window, on the other hand, is a user kept shortlist of proposals to keep tabs on. A user can encounter proposals in various ways, e.g. via the Collective Window and subscribe to it, triggering a full chain of Siphon notifications - entirely independently of the algorithmic Discovery Window. This independence means that the Evaluation Window's dynamics are not contingent on the Discovery Window's algorithm: the convergence mechanism functions even when users browse by recency, by label, or by their own subscription list.
+The Evaluation Window is distinct from the Discovery Window in a structurally important sense: the Discovery Window helps users find potentially interesting or important proposals that balance both the user's and the whole community's interests. The Evaluation Window, on the other hand, is a user-kept shortlist of proposals to keep tabs on. A user can encounter proposals in various ways, e.g. via the Collective Window and subscribe to it, triggering a full chain of Siphon notifications - entirely independently of the algorithmic Discovery Window. This independence means that the Evaluation Window's dynamics are not contingent on the Discovery Window's algorithm: the convergence mechanism functions even when users browse by recency, by label, or by their own subscription list.
 
 \subsection{Window~III: The Collective Window}
 \label{sec:collective-window}
@@ -368,7 +369,7 @@ The specific mechanisms that implement these principles---thematic grouping, lea
 \subsection{The Siphon Effect: Driving Deliberative Dynamics}
 \label{sec:siphon-effect}
 
-The three-window architecture described above provides three complementary perspectives on the same knowledge base at any given moment: novelty discovery, established interest following, and collective  support. 
+The three-window architecture described above provides three complementary perspectives on the same knowledge base at any given moment: novelty discovery, established interest following, and collective support. 
 These windows are constantly moving as the deliberation evolves. The mechanism that drives this is \textbf{active subscription re-evaluation}.
 
 When a new remix is created, the system notifies all current subscribers of the parent proposal, prompting them to compare the original with the improvement and optionally transfer their subscription. Each individual migration updates the user's personal window (they now follow a different proposal's evolution) and because the collective window aggregates subscriptions, shifts the community-level ranking as well. This produces a ``Siphon Effect'': support flows along DAG edges from earlier proposals to their refined derivatives, keeping the deliberation dynamic as the knowledge base grows.
@@ -457,7 +458,7 @@ This section first defines the tracked signals and structural requirements that 
 \subsubsection{Tracked Signals}
 The algorithm operates on five discrete user actions, which are the only behavioral inputs the system records:
 \begin{description}
-    \item[View:] The user opens a proposal's detail page. Recorded server-side as a \texttt{user\_proposal\_views} entry, increments \texttt{unique\_viewer\_count} on first view per user. Scrolling past a card in the feed does \textit{not} count as a view, it requires deliberate click-level commitment.
+    \item[View:] The user opens a proposal's detail page. Each view is recorded server-side as a \texttt{user\_proposal\_views} entry and increments the proposal's \texttt{unique\_viewer\_count} on first access per user. Scrolling past a card in the feed does \textit{not} count as a view, it requires deliberate click-level commitment.
     \item[Subscribe:] The user explicitly signals interest and support. Increments \texttt{subscription\_count} on the proposal and updates the user's label affinity profile.
     \item[Retract:] The user withdraws a previous subscription. Decrements \texttt{subscription\_count}.
     \item[Author / Remix:] The user creates a new proposal, optionally with parent references. Creates new DAG nodes and edges.
@@ -513,7 +514,7 @@ This rigid algorithmic enforcement guarantees maximum label diversity: the commu
 
 Combining two proposals creates a merged label set which will itself be inherited by any further remix. 
 The Ballot's diversity rule enforces label exclusivity. This means if the combination or any of its child proposals gets more subscriptions than a proposal within any of its parent trees, it outcompetes the respective parent tree as well. 
-In the limit, if the community's deliberation converges on a genuinely shared understanding and all labels are merged into one, the Ballot would contain a single proposal---consensus would emerge organically from the labeling system's structural logic without ever imposing a limitation on contradicting proposals. Figure~\ref{fig:label-domination} illustrates how label inheritance through multi-parent combinations can lead to ballot domination.
+In the limit, if the community's deliberation converges on a genuinely shared understanding and all labels are merged into one, the Ballot would contain a single proposal---consensus would emerge organically from the labeling system's structural logic without ever imposing a limitation on contradictory proposals. Figure~\ref{fig:label-domination} illustrates how label inheritance through multi-parent combinations can lead to ballot domination.
 
 \input{figures/fig_label_domination}
 
@@ -549,7 +550,7 @@ In the main workspace view of a question, several tabs are visible at the bottom
 \begin{figure}
     \centering
     \includegraphics[width=0.5\linewidth]{figures/Bottom_Nav_Bar.png}
-    \caption{The Tab-View when entering a question workspace. "Discover" is the instantiation of the Discovery Window, "Subscriptions" is the Evaluation Window, and "Ballot" is the Collective Window, doubling as the final ballot view.}
+    \caption{The Tab-View when entering a question workspace. ``Discover'' is the instantiation of the Discovery Window, ``Subscriptions'' is the Evaluation Window, and ``Ballot'' is the Collective Window, doubling as the final ballot view.}
     \label{fig:window-view-implementation}
 \end{figure}
 
@@ -564,7 +565,7 @@ The \textbf{Detail View} presents a single proposal's complete content, its rela
 \label{sec:graph-view}
 Rather than presenting a full overview of the proposal DAG, the platform embeds a \textbf{local-neighborhood graph} within the Detail View (see Figure~\ref{fig:mobile-detail-dag-view}), showing the selected proposal's immediate structural context: ancestor chains, child iterations, and topical peers. No full-graph overview is exposed to users. 
 
-This design choice is grounded in HCI research on graph visualization complexity. Ghoniem et al.\ \cite{ghoniem2005readability} demonstrated in a controlled experiment that node-link diagram readability degrades significantly beyond approximately 20 vertices for most analytical tasks. Van Ham and Perer \cite{vanham2009search} proposed ``search, show context, expand on demand'' as an alternative to Shneiderman's \cite{shneiderman1996eyes} ``overview first'' mantra, arguing that a local-neighborhood view anchored to a node of interest is more effective for users with a specific target. The platform implements this paradigm: the graph appears on the detail page, anchored to the selected proposal, showing where the idea comes from and what has evolved from it, without requiring the user to parse the full deliberation topology.
+This design choice is grounded in HCI research on graph visualization complexity. Ghoniem et al.\ \cite{ghoniem2005readability} demonstrated in a controlled experiment that node-link diagram readability degrades significantly beyond approximately 20 vertices for most analytical tasks. Van Ham and Perer \cite{vanham2009search} proposed ``search, show context, expand on demand'' as an alternative to Shneiderman's \cite{shneiderman1996eyes} ``overview first'' mantra, arguing that a local-neighborhood view anchored to a node of interest is more effective for users with a specific target. The platform implements this paradigm: the graph appears on the detail page, anchored to the selected proposal, showing where the idea comes from and what has evolved from it, without requiring the user to parse the full deliberation topology. Figure~\ref{fig:mobile-views} shows both views as rendered on mobile.
 
 \begin{figure}[htbp]
   \centering
@@ -646,11 +647,11 @@ Organizational groups were given access to the platform to collaboratively addre
 \label{sec:method-b}
 To complement the asynchronous deployment data, individual ``shoulder viewing'' sessions were conducted in person. Participants were asked to share their screen and ``think aloud'' \cite{ericsson1993protocol} while navigating the platform: verbalising what they were looking at, what they were trying to do, and what confused them.
 
-One such session was conducted (Section~\ref{sec:formative-eval}), using the early desktop prototype with LLM-simulated content. Because this session predated all three deployments and used synthetic rather than community-generated content, it functiond as a \textit{formative} usability evaluation (identifying interaction barriers that informed subsequent design iterations, detailed in Section~\ref{sec:usability-friction})---rather than as a concurrent summative data source. The post-session interview was documented in a structured observation report; no screen recording was retained per the ethics protocol. In addition, several informal think-aloud observation sessions were conducted during the development phase to iteratively refine the interface, though these were not subjected to formal qualitative coding.
+One such session was conducted (Section~\ref{sec:formative-eval}), using the early desktop prototype with LLM-simulated content. Because this session predated all three deployments and used synthetic rather than community-generated content, it functioned as a \textit{formative} usability evaluation (identifying interaction barriers that informed subsequent design iterations, detailed in Section~\ref{sec:usability-friction}). The post-session interview was documented in a structured observation report; no screen recording was retained per the ethics protocol. In addition, several informal think-aloud observation sessions were conducted during the development phase to iteratively refine the interface, though these were not subjected to formal qualitative coding.
 
 \subsection{Platform Telemetry}
 \label{sec:telemetry}
-Throughout all deployments, the platform automatically logged interaction data with timestamps. This included submitted text (proposals, remixes, combinations), pseudonymised user identifiers, page navigation and routing behavior, subscription and dismissal events, notification delivery and action status, ballot submissions and updates, and session timing. This telemetry provides the behavioral data, which may be used to calibrate simulation studies as well as ground the qualitative survey data.
+Throughout all deployments, the platform automatically logged interaction data with timestamps. This included submitted text (proposals, remixes, combinations), pseudoanonymised user identifiers, page navigation and routing behavior, subscription and dismissal events, notification delivery and action status, ballot submissions and updates, and session timing. This telemetry provides the behavioral data, which may be used to calibrate simulation studies as well as ground the qualitative survey data.
 
 \section{Multi-Agent Simulation Testbed}
 \label{sec:method-c}
@@ -823,7 +824,7 @@ Device distribution across all deployments was approximately balanced: 57\% of p
 
 
 \label{sec:study-overview}
-All three deployments completed the full question lifecycle: Discussion, Ballot Preparation, Final Vote, and Decided. The Pilot ran for 12~days (July~5--17, 2026), Study~1 for 12~days (July~27 -- August~8), and Study~2 for 19~days (August~6--25). Study~2 addressed two questions simultaneously, each running through independent phase transitions. As noted in Section~\ref{sec:pilot-study}, Pilot data is reported for completeness and design-iteration context; the main quantitative findings are drawn from the two community studies (Study~1 and Study~2).
+Table~\ref{tab:study-summary} summarizes the three deployments. All three completed the full question lifecycle: Discussion, Ballot Preparation, Final Vote, and Decided. The Pilot ran for 12~days (July~5--17, 2026), Study~1 for 12~days (July~27 -- August~8), and Study~2 for 19~days (August~6--25). Study~2 addressed two questions simultaneously, each running through independent phase transitions. As noted in Section~\ref{sec:pilot-study}, Pilot data is reported for completeness and design-iteration context; the main quantitative findings are drawn from the two community studies (Study~1 and Study~2).
 
 All per-user metrics reported in this chapter are computed over active participants, excluding the researcher's administrator account, one late-joining participant in Study~1, and inactive accounts in Study~2 (users with no evaluative actions). \textit{Evaluations} count proposal detail-page views and comparison views, capturing the cognitive effort of reading and comparing proposals. \textit{Subscriptions} count net active subscriptions at study end (subscribes minus retractions). \textit{Remixes} count proposals created via single-parent edit or multi-parent combine. The Pilot used a different telemetry schema and does not support the Evaluations metric; its remaining metrics are mapped to the equivalent action types. Table~\ref{tab:engagement} summarizes key engagement metrics across the deployments.
 
@@ -955,11 +956,11 @@ Neither (Random + unconstrained)            & 0.679 & 3.78 & 0.689 & 4.00 \\
 \end{tabular}
 \end{table}
 
-Two findings emerge from the factorial design:
+Table~\ref{tab:three-window} reports the results. Two findings emerge from the factorial design:
 
 \paragraph{Feed routing matters more than ballot diversity.} At $N=100$, removing PersonalFocus reduces selection efficiency by up to 42\% (Full Platform $\eta = 0.811$ vs No Feed Routing $\eta = 0.474$), while removing ballot diversity alone has a much smaller effect ($\eta = 0.811$ vs $\eta = 0.744$). This confirms that intelligent attention routing is the primary driver of selection quality; ballot diversity provides a secondary thematic-coverage guarantee.
 
-\paragraph{Ballot diversity helps at small $N$, costs at large $N$.} At $N=50$, the Full Platform ($\eta = 0.870$) substantially outperforms the No Ballot Diversity variant ($\eta = 0.621$). At $N=100$, the relationship partially reverses: the No Ballot Diversity variant achieves higher absolute quality ($q = 4.88$) than the Full Platform ($q = 3.88$). Between $N=50$ and $N=100$, the ballot diversity cost increased from $\Delta\eta = -0.249$ to $\Delta\eta = -0.067$ (where negative values indicate the Full Platform outperforming the No Ballot Diversity variant). Extrapolation beyond $N=100$ requires additional simulation runs. The root cause is cascading label exclusion: remixed proposals inherit parent labels, so deep-DAG proposals accumulate many labels, blocking high-quality siblings from ballot slots via the any-overlap exclusion rule. A label-weighted scoring mechanism, penalizing overlap proportionally rather than applying hard exclusion, could preserve diversity at lower cost and is a concrete target for future refinement.
+\paragraph{Ballot diversity helps at small $N$, costs at large $N$.} At $N=50$, the Full Platform ($\eta = 0.870$) substantially outperforms the No Ballot Diversity variant ($\eta = 0.621$). At $N=100$, the relationship partially reverses: the No Ballot Diversity variant achieves higher absolute quality ($q = 4.88$) than the Full Platform ($q = 3.88$). Between $N=50$ and $N=100$, the ballot diversity cost increased from $\Delta\eta = -0.249$ to $\Delta\eta = -0.067$ (where negative values indicate the Full Platform outperforming the No Ballot Diversity variant). Extrapolation beyond $N=100$ requires additional simulation runs. The root cause is cascading label exclusion: remixed proposals inherit parent labels, so deep-DAG proposals accumulate many labels, blocking high-quality siblings from ballot slots via the any-overlap exclusion rule. A label-weighted scoring mechanism, penalizing overlap proportionally rather than applying hard exclusion, could preserve diversity at lower cost and is a concrete target for future refinement (Figure~\ref{fig:three-window-ablation}).
 
 \begin{figure}[htbp]
 \centering
@@ -1007,9 +1008,10 @@ The DAG structures produced by each study group reveal three distinct topologica
 \centering
 \caption{DAG topology metrics per study and question. Fork:Combine ratio is the number of single-parent edits divided by multi-parent combinations.}
 \label{tab:dag-topology}
+\small
 \begin{tabular}{lccccccc}
 \toprule
- & Props. & Roots & Edits & Combos & Max depth & Mean depth & Fork:Combine \\
+ & Props. & Roots & Edits & Comb. & Max d. & Mean d. & Fork:Comb. \\
 \midrule
 Pilot (3~Qs) & 27 & 13 & 11 & 3 & 2 & 0.70 & 3.67 \\
 \midrule
@@ -1217,7 +1219,7 @@ Simulation ($N{=}10$) & 10 & --- & 7.9 & 2.6 & 24.0 \\
 \end{tabular}
 \end{table}
 
-Human subscription rates are $2.1$--$4.9\times$ lower than simulated agents, reflecting the cognitive cost of real deliberation: each subscription decision requires reading, comprehending, and comparing proposals rather than instantaneous evaluation. Remix intensity shows a similar pattern, with Study~2 approaching half the simulation rate ($1.3$ vs.\ $2.6$). Siphon activity differs sharply: 2 of 5~notifications were responded to in Study~1 (40\%) and 14 of 25~in Study~2 (56\%), compared to 24.0~atomic migration actions per simulation run. The gap reflects the reduced DAG depth in human studies, which limits the parent--child relationships available to trigger migrations. The simulation therefore represents a \textit{mechanical ceiling}: the performance envelope when all mechanisms operate as designed with full engagement.
+Human subscription rates are $2.1$--$4.9\times$ lower than simulated agents, reflecting the cognitive cost of real deliberation: each subscription decision requires reading, comprehending, and comparing proposals rather than instantaneous evaluation. Remix intensity shows a similar pattern, with Study~2 approaching half the simulation rate ($1.3$ vs.\ $2.6$). Siphon activity differs sharply: 2 of 5~notifications were responded to in Study~1 (40\%) and 14 of 25~in Study~2 (56\%), compared to 24.0~atomic migration actions per simulation run. The gap reflects the reduced DAG depth in human studies, which limits the parent--child relationships available to trigger migrations. The simulation therefore represents a \textit{mechanical ceiling}: the performance envelope when all mechanisms operate as designed with full engagement (Figure~\ref{fig:human-vs-sim}).
 
 \begin{figure}[htbp]
 \centering
@@ -1411,7 +1413,7 @@ The platform is a full-stack web application. The backend is built with PocketBa
 \section{Progressive Web App Architecture}
 \label{sec:appendix-pwa}
 
-The platform is deployed as a Progressive Web App with a service worker (\texttt{service-worker.ts}) that handles push notifications and manages the app lifecycle. Push notifications are delivered through two parallel channels: the Web~Push~API for out-of-app alerts, and PocketBase's Server-Sent Events (SSE)-based realtime subscriptions for in-app streaming. This delivery mechanism supports the Siphon Effect. In practice, the in-app notification panel proved sufficient for prompting vote re-evaluation even when users had not installed the PWA; push notifications serve as a convenience for out-of-app engagement rather than a prerequisite for the Siphon mechanism.
+The platform is deployed as a Progressive Web App with a service worker (\texttt{service-\allowbreak worker.ts}) that handles push notifications and manages the app lifecycle. Push notifications are delivered through two parallel channels: the Web~Push~API for out-of-app alerts, and PocketBase's Server-Sent Events (SSE)-based realtime subscriptions for in-app streaming. This delivery mechanism supports the Siphon Effect. In practice, the in-app notification panel proved sufficient for prompting vote re-evaluation even when users had not installed the PWA; push notifications serve as a convenience for out-of-app engagement rather than a prerequisite for the Siphon mechanism.
 
 \section{Simulation Experiment Suite}
 \label{sec:sim-appendix}
@@ -1445,7 +1447,7 @@ Proposal quality is assigned deterministically from the DAG topology at creation
 \caption{Agent behavior calibration. All parameters derived from WG~Studiengruppe field data unless otherwise noted.}
 \label{tab:sim-calibration}
 \small
-\begin{tabular}{l l l}
+\begin{tabular}{l l p{5.5cm}}
 \toprule
 \textbf{Parameter} & \textbf{Value} & \textbf{Source} \\
 \midrule
