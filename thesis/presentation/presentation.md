@@ -283,17 +283,17 @@ The ballot algorithm iteratively selects champions with zero label overlap, up t
 
 # Value-Sensitive Design Choices
 
-- **Labels → parallel, unintrusive discussion + diversity-preserving aggregation:**
+- **Labels: parallel, unintrusive discussion + diversity-preserving aggregation**
   Thematic branches evolve independently; the ballot algorithm ensures minority perspectives reach the final vote without requiring moderation
 
-- **PersonalFocus → balancing group vs. individual attention:**
+- **PersonalFocus: balancing group vs. individual attention**
   Anti-preferential attachment distributes collective exploration fairly, while personal affinity respects individual interests
   
-- **AI-agnostic design:**
-  Every system action traceable to explicit user actions and documented formulas — no black-box ML models. Simple heuristics over opaque algorithms. 
-
+- **AI-agnostic design**
+  Modular Design. Prototype: Simple heuristics over opaque algorithms. no black-box ML models. -> Procedural Legitimacy
+<!-- 
 - **Privacy-first computation:**
-  PersonalFocus runs **entirely client-side** 
+  PersonalFocus runs **entirely client-side**  -->
 
 
 <!--
@@ -320,7 +320,7 @@ Before I move on to evaluation — any questions about the architecture, the mec
 <div class="columns">
 <div>
 
-### 🧑‍🤝‍🧑 Human Experiments
+### 🧑‍🤝‍🧑 User Study
 - 2 community deployments (N=11, N=12)
 - Community defined normative questions
 - Mixed methods: telemetry, SUS survey, think-aloud
@@ -344,7 +344,7 @@ I tested the platform in two ways. First, two real-world deployments with commun
 
 ---
 
-# Human Experiments: Setting
+# User Study: Setting
 
 <div class="columns">
 <div>
@@ -502,7 +502,7 @@ They use subscriptions as bookmarks, muddying the convergence signal. They procr
 
 <!-- _class: hero -->
 
-# The Core Asymmetry
+# Algorithm Scales - Human Interface Has Potential
 
 <div class="columns">
 <div>
@@ -560,15 +560,18 @@ Fourth, a proper app. The web interface worked, and in-app notifications had a 5
 
 ---
 
-# Outlook
+# Perspective
 
 **Multimodal remixing:**
 Voice, drawings, video as input modalities → lower barriers for non-writers. Cross-modal translators could convert spoken or visual contributions into the text and vice versa.
 
 **Actually _Democratic_ Collective Intelligence:**
-If such a system can prove to work well at scale, it could replace other collective intelligence systems currently managing society.
+Potenial for replacing undemocratic collective intelligence systems.
 
-Replacing chaotic and undemocratic ways of resource allocation by markets with **fine-grained democratic economic planning:** The historical bottleneck was informational (Cockshott & Cottrell), not computational. Synesis provides st exactly that.
+* E.G. replacing chaotic and unfair resource allocation systems like markets with 
+**fine-grained democratic economic planning:** 
+  * The historical bottleneck was informational (Cockshott & Cottrell), not computational. 
+-> Synesis promises st exactly that.
 
 <!--
 Speaker Notes:
